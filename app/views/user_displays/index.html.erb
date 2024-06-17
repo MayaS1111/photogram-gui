@@ -1,6 +1,27 @@
 <h1>List of users</h1>
 
-<label for=""></label>
-<input id="" type="text"></input>
+<form action="/create_user">
+<label for="browser_username">Username</label>
+<input id="browser_username" type="text" placeholder="Enter a username..."></input>
+
+<button>Add user</button>
+</form>
+
+<table border=1>
+<tr>
+  <th>ID</th>
+  <th>Username</th>
+  <td></td>
+<tr>
+
+<% @users.each do |user|%>
+<tr>
+  <td><%= user.id%></td>
+  <td><%= user.username%></td>
+  <td><a href="/users/<%= user.username%>">Show details</a></td>
+<tr>
+<% end %>
+
+</table>
 
 <hr>
