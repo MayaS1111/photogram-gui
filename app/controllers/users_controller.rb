@@ -1,25 +1,38 @@
 class UsersController < ApplicationController
   def index
     @users = User.all
-
     render({template: "user_displays/index"})
   end
 
   def show
-    @user = User.where({:id => "path_id"})
+    @user = User.where({:username => "path_username"}).first
 
     render({template: "user_displays/show"})
   end
 
   def create
-    @user = User.where({:id => "path_id"})
+    @the_user = User.new
+    @the_user.username = params.fetch("entered_name")
     
-    render({template: "user_displays/show"})
+    @the_user.save
+
+    if @the_user.valid?
+      @the_user.save
+      redirect_to("/users/#{@the_user.username}", { :notice => "User created successfully." })
+    else
+      redirect_to("/users", { :notice => "User failed to create successfully." })
+    end
   end
 
-  def update
-    @users = User.all
+  # def update
+  #   @user = User.where({:username => "path_username"}).first
     
-    render({template: "user_displays/show"})
-  end
+  #   redirect_to("/users/#{@user.username}")
+  # end
+
+  # def destroy
+  #   @user = User.where({:username => "path_username"}).first
+    
+  #   redirect_to("/users/#{@user.username}")
+  # end
 end
