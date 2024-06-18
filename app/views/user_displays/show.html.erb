@@ -1,13 +1,13 @@
-<h1><%= @the_user.username %></h1>
-
+<h1></h1>
+<% the_user = User.where({:username => "tt"})%>
 <form action="">
-<td>
-</td>
+  <dt>Id</dt>
+    <dd><%= @user.id %></dd>
+  <dt>Edit user</dt>
+  <dd>
+    <label for="browser_username2">Username</label>
+    <input id="browser_username2" name="entered_name2" type="text" value="<%=@user%><">
+  </dd>
 
-<td>
-<label for="browser_username1">Username</label>
-<input id="browser_username1" name="" type="text" value="<%= @user.username %>"></input>
-</td>
-
-<button>Add user</button>
+<button>Update User</button>
 </form>

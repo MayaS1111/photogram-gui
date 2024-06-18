@@ -1,12 +1,12 @@
 class UsersController < ApplicationController
   def index
-    @users = User.all
+    @users = User.all.order({:username => :asc})
     render({template: "user_displays/index"})
   end
 
   def show
-    @user = User.where({:username => "path_username"}).first
-
+    the_username = params.fetch("path_username")
+    @user = User.where({:username => "the_username"}).at(0)
     render({template: "user_displays/show"})
   end
 
@@ -16,11 +16,12 @@ class UsersController < ApplicationController
     
     @the_user.save
 
+
     if @the_user.valid?
       @the_user.save
       redirect_to("/users/#{@the_user.username}", { :notice => "User created successfully." })
     else
-      redirect_to("/users", { :notice => "User failed to create successfully." })
+      redirect_to("/users/#{@the_user.username}", { :notice => "User failed to create successfully." })
     end
   end
 
