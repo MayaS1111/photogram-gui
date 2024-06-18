@@ -1,6 +1,6 @@
 <h1>Photo Details</h1>
 
-<form action="" >
+<form action="/modify_photo/<%= @photo.id%>" >
   <dt>Image</dt>
     <dd><image src= "<%= @photo.image%>"></dd>
 
@@ -19,16 +19,21 @@
       <input id="browser_image2" name="entered_image2" type="text" value="<%= @photo.image%>">
 
       <label for="browser_caption2">Caption</label>
-      <textarea id="browser_caption2" name="entered_cation2" type="text"><%= @photo.caption%></textarea>
+      <textarea id="browser_caption2" name="entered_caption2" type="text"><%= @photo.caption%></textarea>
 
       <button>Add photo</button>
     </dd>
 
   <dt>Delete photo</dt>
-  <dd><a href="">Delete this photo</a></dd>
+  <dd><a href="/destroy_photo/<%= @photo.id%>">Delete this photo</a></dd>
 </form>
 
 <h2>Comments</h2>
+
+<hr>
+<%= @photo.comments%> <br>
+<%= @photo.id%><br>
+<hr>
 
 <table>
   <tr>
@@ -46,16 +51,16 @@
   <% end%>
 </table>
 
-<form action="">
+<form action="/insert_comment" method="post">
   <h3>Add a new comment</h3>
     
   <label for="browser_photoID">Photo ID</label>
   <input id="browser_photoID" name="entered_photoID" type="text" value="<%=@photo.id%>">
 
   <label for="browser_author">Author ID</label>
-  <input id="browser_author" name="entered_author" type="text" placeholder="Enter a URL for the image...">
+  <input id="browser_author" name="entered_authorID" type="text" placeholder="Enter a URL for the image...">
 
-  <label for="browser_comment">Image</label>
+  <label for="browser_comment">Comment</label>
   <textarea id="browser_comment" name="entered_comment" type="text" placeholder="Enter a comment..."></textarea>
 
   <button>Add comment</button>

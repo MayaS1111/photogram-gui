@@ -7,6 +7,12 @@ Rails.application.routes.draw do
 
   get("/photos", {controller: "photos" , action: "index"})
   get("/photos/:path_id", {controller: "photos" , action: "show"})
-  post("/insert_photo", {controller: "photos" , action: "create"})
-  get("/modify_photo/:path_id", {controller: "photos" , action: "update"})
+  post("/insert_photo", {controller: "photos" , action: "create_photo"})
+  get("/modify_photo/:path_id", {controller: "photos" , action: "update_photo"})
+  get("/destroy_photo/:path_id", {controller: "photos" , action: "destroy_photo"})
+
+
+
+  post("/insert_comment", {controller: "photos" , action: "create_comment"})
+  
 end

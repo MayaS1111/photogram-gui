@@ -11,7 +11,7 @@ class PhotosController < ApplicationController
     render({template: "photo_displays/show"})
   end
 
-  def create
+  def create_photo
     @photo = Photo.new
     @photo.image = params.fetch("entered_image")
     @photo.caption = params.fetch("entered_caption")
@@ -23,7 +23,47 @@ class PhotosController < ApplicationController
       @photo.save
       redirect_to("/photos/#{@photo.id}", { :notice => "Photo created successfully." })
     else
-      redirect_to("/users/#{@photo.id}", { :notice => "Photo failed to create successfully." })
+      redirect_to("/photos/#{@photo.id}", { :notice => "Photo failed to create successfully." })
     end
   end
+
+  def update_photo
+    the_id = params.fetch("path_id")
+    @photo = Photo.where({:id => the_id}).first
+    @photo.image = params.fetch("entered_image2")
+    @photo.caption = params.fetch("entered_caption2")
+
+    if @photo.valid?
+      @photo.save
+      redirect_to("/photos/#{@photo.id}", { :notice => "Photo created successfully." })
+    else
+      redirect_to("/photos/#{@photo.id}", { :notice => "Photo failed to create successfully." })
+    end
+  end
+  def destroy_photo
+    the_id = params.fetch("path_id")
+    @photo = Photo.where({:id => the_id}).first
+
+    @photo.destroy
+  
+
+    if @photo.valid?
+      @photo.save
+      redirect_to("/photos", { :notice => "Photo created successfully." })
+    else
+      redirect_to("/photos", { :notice => "Photo failed to create successfully." })
+    end
+  end
+
+  def create_comment
+    @comment = Comment.new
+    @comment.photo_id = params.fetch("entered_photoID")
+    @comment.author_id = params.fetch("entered_authorID")
+    @comment.body = params.fetch("entered_comment")
+    
+    @comment.save
+    redirect_to("/photos/#{@comment.photo_id}")
+  end
+
+
 end
