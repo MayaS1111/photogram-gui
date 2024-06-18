@@ -6,30 +6,32 @@ class UsersController < ApplicationController
 
   def show
     the_username = params.fetch("path_username")
-    @user = User.where({:username => "the_username"}).at(0)
+    @user = User.where({:username => the_username}).first
     render({template: "user_displays/show"})
   end
 
   def create
-    @the_user = User.new
-    @the_user.username = params.fetch("entered_name")
-    
-    @the_user.save
+    @user = User.new
+    @user.username = params.fetch("entered_name")
 
-
-    if @the_user.valid?
-      @the_user.save
-      redirect_to("/users/#{@the_user.username}", { :notice => "User created successfully." })
+    if @user.valid?
+      @user.save
+      redirect_to("/users/#{@user.username}", { :notice => "User created successfully." })
     else
-      redirect_to("/users/#{@the_user.username}", { :notice => "User failed to create successfully." })
+      redirect_to("/users/#{@user.username}", { :notice => "User failed to create successfully." })
     end
   end
 
-  # def update
-  #   @user = User.where({:username => "path_username"}).first
+  def update
+    @user.username = params.fetch("entered_name")
     
-  #   redirect_to("/users/#{@user.username}")
-  # end
+    if @user.valid?
+      @user.save
+      redirect_to("/users/#{@user.username}", { :notice => "User created successfully." })
+    else
+      redirect_to("/users/#{@user.username}", { :notice => "User failed to create successfully." })
+    end
+  end
 
   # def destroy
   #   @user = User.where({:username => "path_username"}).first

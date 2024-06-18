@@ -1,13 +1,28 @@
 <h1></h1>
-<% the_user = User.where({:username => "tt"})%>
+
 <form action="">
   <dt>Id</dt>
-    <dd><%= @user.id %></dd>
+    <dd><%= @user.id%></dd>
   <dt>Edit user</dt>
   <dd>
     <label for="browser_username2">Username</label>
-    <input id="browser_username2" name="entered_name2" type="text" value="<%=@user%><">
+    <input id="browser_username2" name="entered_name2" type="text" value="<%= @user.username%>">
+    <button>Update User</button>
   </dd>
 
-<button>Update User</button>
+<h2>Own photos (<%= @user.own_photos.count%>)</h2>
+<table border=1>
+<tbody><tr>
+  <th>Image</th>
+  <th>Owner</th>
+  <th>Caption</th>
+  <th>Posted</th>
+  <th></th>
+</tr>
+
+<tr>
+
+</tr>
+</tbody></table>
+
 </form>
