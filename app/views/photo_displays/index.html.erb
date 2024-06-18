@@ -1,18 +1,21 @@
 <h1>List of photos</h1>
-
-<form action="/insert_user" method="post">
+<%=params%>
+<form action="/insert_photo" method="post">
 
 <label for="browser_image">Image</label>
 <input id="browser_image" name="entered_image" type="text" placeholder="Enter a URL for the image...">
 
 <label for="browser_caption">Caption</label>
-<textarea id="browser_caption" name="entered_cation" type="text" placeholder="Enter a cation for photo..."></textarea>
+<textarea id="browser_caption" name="entered_caption" type="text" placeholder="Enter a cation for photo..."></textarea>
 
 <label for="browser_ownerID">Owner ID</label>
 <input id="browser_ownerID" name="entered_ownerID" type="text" placeholder="Enter an ID of the User...">
 
 <button>Add photo</button>
+
 </form>
+
+<hr>
 
 <table border= "1">
 <tr>

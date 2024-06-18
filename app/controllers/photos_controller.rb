@@ -11,15 +11,19 @@ class PhotosController < ApplicationController
     render({template: "photo_displays/show"})
   end
 
-  # def create
-  #   @user = User.new
-  #   @user.username = params.fetch("entered_name")
+  def create
+    @photo = Photo.new
+    @photo.image = params.fetch("entered_image")
+    @photo.caption = params.fetch("entered_caption")
+    the_userid = params.fetch("entered_ownerID")
+    # @user_id = User.where({:id => the_userid}).first
+    @photo.owner_id = the_userid
 
-  #   if @user.valid?
-  #     @user.save
-  #     redirect_to("/users/#{@user.username}", { :notice => "User created successfully." })
-  #   else
-  #     redirect_to("/users/#{@user.username}", { :notice => "User failed to create successfully." })
-  #   end
-  # end
+    if @photo.valid?
+      @photo.save
+      redirect_to("/photos/#{@photo.id}", { :notice => "Photo created successfully." })
+    else
+      redirect_to("/users/#{@photo.id}", { :notice => "Photo failed to create successfully." })
+    end
+  end
 end

@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   def show
     the_username = params.fetch("path_username")
     @user = User.where({:username => the_username}).first
-    
+
     render({template: "user_displays/show"})
   end
 
@@ -24,10 +24,10 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.where({:username => params{:path_username}})
+    the_username = params.fetch("path_username")
+    @user = User.where({:username => the_username}).first
     @user.username = params.fetch("entered_name2")
     
-   
     if @user.valid?
       @user.save
       redirect_to("/users/#{@user.username}", { :notice => "User created successfully." })
