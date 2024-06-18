@@ -1,47 +1,63 @@
 <h1>Photo Details</h1>
 
-
 <form action="" >
   <dt>Image</dt>
+    <dd><image src= "<%= @photo.image%>"></dd>
+
   <dt>Caption</dt>
-  <dt>Poster</dt>
+    <dd><p><%= @photo.caption%><p></dd>
+
+  <dt>Owner</dt>
+    <dd><%= @photo.poster.username%></dd>
+
+  <dt>Posted</dt>
+    <dd><%= @photo.created_at%></dd>
+
   <dt>Edit photo</dt>
     <dd>
       <label for="browser_image2">Image</label>
-      <input id="browser_image2" name="entered_image2" type="text" placeholder="Enter a URL for the image...">
+      <input id="browser_image2" name="entered_image2" type="text" value="<%= @photo.image%>">
 
       <label for="browser_caption2">Caption</label>
-      <textarea id="browser_caption2" name="entered_cation2" type="text" placeholder="Enter a cation for photo..."></textarea>
-
-      <label for="browser_ownerID2">Owner ID</label>
-      <input id="browser_ownerID2" name="entered_ownerID2" type="text" placeholder="Enter an ID of the User...">
+      <textarea id="browser_caption2" name="entered_cation2" type="text" value="<%= @photo.caption%>"></textarea>
 
       <button>Add photo</button>
     </dd>
+
   <dt>Delete photo</dt>
-  <dd><a href="">Delete this image</a></dd>
+  <dd><a href="">Delete this photo</a></dd>
 </form>
 
 <h2>Comments</h2>
 
-<table border= "1">
+<table>
   <tr>
     <th>Commenter</th>
     <th>Comment</th>
     <th>Posted</th>
   <tr>
 
+  <% @photo.comments.order({:created_at => :desc}).each do |comment|%>
   <tr>
-    
+    <td><%= comment.commenter.username%></td>
+    <td><%= comment.body%></td>
+    <td><%= comment.created_at%></td>
   <tr>
+  <% end%>
 </table>
 
-<h3>Add a new comment</h3>
-
 <form action="">
-  <dt>Photo ID</dt>
-  <dt>Auther ID</dt>
-  <dt>Comment</dt>
+  <h3>Add a new comment</h3>
+    
+  <label for="browser_photoID">Photo ID</label>
+  <input id="browser_photoID" name="entered_photoID" type="text" value="<%=@photo.id%>">
+
+  <label for="browser_author">Author ID</label>
+  <input id="browser_author" name="entered_author" type="text" placeholder="Enter a URL for the image...">
+
+  <label for="browser_comment">Image</label>
+  <textarea id="browser_comment" name="entered_comment" type="text" placeholder="Enter a comment..."></textarea>
 
   <button>Add comment</button>
+    
 </form>
