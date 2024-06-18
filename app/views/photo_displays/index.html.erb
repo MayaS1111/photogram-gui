@@ -1,0 +1,32 @@
+<h1>List of photos</h1>
+
+<form action="/insert_user" method="post">
+
+<label for="browser_image">Image</label>
+<input id="browser_image" name="entered_image" type="text" placeholder="Enter a URL for the image...">
+
+<label for="browser_caption">Caption</label>
+<input id="browser_caption" name="entered_cation" type="text" placeholder="Enter a cation for photo...">
+
+<label for="browser_ownerID">Owner ID</label>
+<input id="browser_ownerID" name="entered_ownerID" type="text" placeholder="Enter an ID of the User...">
+
+<button>Add photo</button>
+</form>
+
+<table border=1>
+<tr>
+  <th>ID</th>
+  <th>Username</th>
+  <td></td>
+<tr>
+
+<% @photo.each do |photo|%>
+<tr>
+  <td><%= photo%></td>
+  <td><%= photo%></td>
+  <td><a href="/photos<%= photo%>">Show details</a></td>
+<tr>
+<% end %>
+
+</table>
