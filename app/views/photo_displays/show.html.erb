@@ -1,0 +1,44 @@
+<h1>Photo Details</h1>
+
+<form action="" >
+
+<dt>Image</dt>
+<dt>Caption</dt>
+<dt>Poster</dt>
+<dt>Edit photo</dt>
+
+<dt>Delete photo</dt>
+<dd><a href="">Delete this image</a></dd>
+
+<%# <label for="browser_image2">Image</label>
+<input id="browser_image2" name="entered_image2" type="text" placeholder="Enter a URL for the image...">
+
+<label for="browser_caption2">Caption</label>
+<textarea id="browser_caption2" name="entered_cation2" type="text" placeholder="Enter a cation for photo..."></textarea>
+
+<label for="browser_ownerID2">Owner ID</label>
+<input id="browser_ownerID2" name="entered_ownerID2" type="text" placeholder="Enter an ID of the User...">
+
+<button>Add photo</button> %>
+</form>
+
+<table border= "1">
+<tr>
+  <th>Image</th>
+  <th>Caption</th>
+  <th>Owner</th>
+  <th>Posted</th>
+  <th></th>
+<tr>
+
+<%# <% @photos.each do |photo|%>
+<tr>
+  <td><image src= "<%= photo.image%>"></td>
+  <td><%= photo.caption%></td>
+  <td><%= photo.poster.username%></td>
+  <td><%= photo.created_at%></td>
+  <td><a href="/photos<%= photo%>">Show details</a></td>
+<tr>
+<% end %> %>
+
+</table>

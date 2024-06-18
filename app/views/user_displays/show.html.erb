@@ -26,7 +26,7 @@
   <td><%= @user.username%></td>
   <td><%= a_photo.caption%></td>
   <td><%= a_photo.created_at%></td>
-  <td><a href="/posts">Show details</a></td>  <%# add photo/id link %>
+  <td><a href="/photos/<%= a_photo.id%>">Show details</a></td>  <%# add photo/id link %>
 </tr>
 <% end %>
 </tbody></table>

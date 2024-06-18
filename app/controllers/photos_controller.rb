@@ -4,11 +4,11 @@ class PhotosController < ApplicationController
     render({template: "photo_displays/index"})
   end
 
-  # def show
-  #   the_username = params.fetch("path_username")
-  #   @user = User.where({:username => the_username}).first
-  #   render({template: "user_displays/show"})
-  # end
+  def show
+    the_id = params.fetch("path_id")
+    @photo = Photo.where({:id => the_id}).first
+    render({template: "photo_displays/show"})
+  end
 
   # def create
   #   @user = User.new
