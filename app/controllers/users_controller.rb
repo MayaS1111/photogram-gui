@@ -23,8 +23,10 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user.username = params.fetch("entered_name")
+    @user = User.where({:username => params{:path_username}})
+    @user.username = params.fetch("entered_name2")
     
+   
     if @user.valid?
       @user.save
       redirect_to("/users/#{@user.username}", { :notice => "User created successfully." })

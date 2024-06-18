@@ -1,17 +1,18 @@
-<h1></h1>
+<h1><%= @user.username%></h1>
 
-<form action="">
+
+<form action="/modify_user/<%= @user.username%>">
   <dt>Id</dt>
     <dd><%= @user.id%></dd>
   <dt>Edit user</dt>
   <dd>
     <label for="browser_username2">Username</label>
     <input id="browser_username2" name="entered_name2" type="text" value="<%= @user.username%>">
-    <button>Update User</button>
+    <button>Update User</button>    <%# fix button %>
   </dd>
 
 <h2>Own photos (<%= @user.own_photos.count%>)</h2>
-<table border=1>
+<table border= "1">
 <tbody><tr>
   <th>Image</th>
   <th>Owner</th>
@@ -19,10 +20,15 @@
   <th>Posted</th>
   <th></th>
 </tr>
-
+<% @user.own_photos.each do |a_photo|%>
 <tr>
-
+  <td><image src= "<%= a_photo.image%>"></td>
+  <td><%= @user.username%></td>
+  <td><%= a_photo.caption%></td>
+  <td><%= a_photo.created_at%></td>
+  <td><a href="/">Show details</a></td>  <%# add photo/id link %>
 </tr>
+<% end %>
 </tbody></table>
 
 </form>
