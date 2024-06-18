@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   def show
     the_username = params.fetch("path_username")
     @user = User.where({:username => the_username}).first
+    
     render({template: "user_displays/show"})
   end
 

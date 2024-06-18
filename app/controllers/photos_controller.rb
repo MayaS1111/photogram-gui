@@ -7,6 +7,7 @@ class PhotosController < ApplicationController
   def show
     the_id = params.fetch("path_id")
     @photo = Photo.where({:id => the_id}).first
+    
     render({template: "photo_displays/show"})
   end
 
