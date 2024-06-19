@@ -1,5 +1,5 @@
 <h1>List of photos</h1>
-<%=params%>
+
 <form action="/insert_photo" method="post">
 
 <label for="browser_image">Image</label>
@@ -28,7 +28,7 @@
 
 <% @photos.each do |photo|%>
 <tr>
-  <td><image src= "<%= photo.image%>"></td>
+  <td><img src= "<%= photo.image%>"></td>
   <td><%= photo.caption%></td>
   <td><%= photo.poster.username%></td>
   <td><%= photo.created_at%></td>

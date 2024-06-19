@@ -40,6 +40,7 @@ class PhotosController < ApplicationController
       redirect_to("/photos/#{@photo.id}", { :notice => "Photo failed to create successfully." })
     end
   end
+
   def destroy_photo
     the_id = params.fetch("path_id")
     @photo = Photo.where({:id => the_id}).first
@@ -64,6 +65,4 @@ class PhotosController < ApplicationController
     @comment.save
     redirect_to("/photos/#{@comment.photo_id}")
   end
-
-
 end

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get("/", {controller: "users" , action: "index"})
+  
   get("/users", {controller: "users" , action: "index"})
   get("/users/:path_username", {controller: "users" , action: "show"})
   post("/insert_user", {controller: "users" , action: "create"})
@@ -10,8 +11,6 @@ Rails.application.routes.draw do
   post("/insert_photo", {controller: "photos" , action: "create_photo"})
   get("/modify_photo/:path_id", {controller: "photos" , action: "update_photo"})
   get("/destroy_photo/:path_id", {controller: "photos" , action: "destroy_photo"})
-
-
 
   post("/insert_comment", {controller: "photos" , action: "create_comment"})
   

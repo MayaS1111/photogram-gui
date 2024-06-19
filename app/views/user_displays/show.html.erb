@@ -7,8 +7,9 @@
   <dd>
     <label for="browser_username2">Username</label>
     <input id="browser_username2" name="entered_name2" type="text" value="<%= @user.username%>">
-    <button>Update User</button>    <%# fix button %>
   </dd>
+
+<button>Update user</button>
 
 <h2>Own photos (<%= @user.own_photos.count%>)</h2>
 <table border= "1">
@@ -21,11 +22,11 @@
 </tr>
 <% @user.own_photos.each do |a_photo|%>
 <tr>
-  <td><image src= "<%= a_photo.image%>"></td>
+  <td><img src= "<%= a_photo.image%>"></td>
   <td><%= @user.username%></td>
   <td><%= a_photo.caption%></td>
   <td><%= a_photo.created_at%></td>
-  <td><a href="/photos/<%= a_photo.id%>">Show details</a></td>  <%# add photo/id link %>
+  <td><a href="/photos/<%= a_photo.id%>">Show details</a></td>  
 </tr>
 <% end %>
 </tbody></table>
